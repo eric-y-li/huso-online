@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import CompetitorForm from './components/CompetitorForm.js';
 
+// Putting a component here will let you see how it looks to test!
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <CompetitorForm />
   </React.StrictMode>,
   document.getElementById('root')
 );
