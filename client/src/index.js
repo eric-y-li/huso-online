@@ -4,11 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import CompetitorForm from './components/CompetitorForm.js';
+import TextTournament from './components/TextTournament.js';
+
+
 
 // Putting a component here will let you see how it looks to test!
 ReactDOM.render(
   <React.StrictMode>
     <CompetitorForm />
+
+    <TextTournament />
   </React.StrictMode>,
   document.getElementById('root')
 );
