@@ -16,6 +16,7 @@ export default class CompetitorForm extends React.Component {
             // for out-of-the-box components (ie. Typography)
             <div>
                 <h1>Stuff Goes Here</h1>
+
             </div>    
         );
     }   
