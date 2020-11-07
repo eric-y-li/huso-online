@@ -1,63 +1,45 @@
 import React from 'react';
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
+import Button from '@material-ui/core/Button';
 
 function ChangeId(props) {
-    return <div className="timeline-item"> 
-      <div >
+    return(
+    <div className="timeline-item"> 
+      <div>
+        <Button onClick={() => props.setActiveTitle(props.tournamentID)}>
+            Click me!
+        </Button>
       <Typography display ='block'
-        color ="primary" >
+        color ="primary">
         {props.title}
       </Typography>
       </div>
-       </div>
+    </div>
+    )
   }
 
-class TextTournament extends React.Component {
-    constructor(props) {
-        super(props);
-        // unused at the moment - feel free to incorporate or modify
-        this.state = {
-            tournamentId: "",
-            userId: ""
-        }
-    }
+export default function TextTournament(props) {
+    const [activeTitle, setActiveTitle] = React.useState('BLANK');
+    const [tournamentID, setTournamentID] = React.useState('BLANK');
+    const [userId, setUserID] = React.useState('BLANK');
 
-
-     _handleTournamentIdChange = (e) => {
-        this.setState({
-            tournamentId: e.target.value
-        });
-     }
-
-    _handleUserIdChange = (e) => {
-        this.setState({
-            userId: e.target.value
-        }, () => {console.log(this.state.userId)});
-
-    }
-
-    render() {
-        return(
-            <div>
-                <TextField 
-                    variant = "filled"
-                    label = "Tournament ID"
-                    placeholder = "my_tournament_1234"
-                    onChange ={this._handleTournamentIdChange}/>
-                <TextField 
-                    variant = "filled"
-                    label = "User ID"
-                    placeholder = "i_am_player_one"
-                    onChange ={this._handleUserIdChange}/>
-                <ChangeId title = {this.state.tournamentId}
-                    setActiveId={this.setState}/>
-            </div>
-        )
-    }
-    
+    return(
+        <div>
+            <TextField 
+                variant = "filled"
+                label = "Tournament ID"
+                placeholder = "my_tournament_1234"
+                onChange ={(event) => {setTournamentID(event.target.value)}}/>
+            <TextField 
+                variant = "filled"
+                label = "User ID"
+                placeholder = "i_am_player_one"
+                onChange ={(event) => {setUserID(event.target.value)}}/>
+            <ChangeId title = {activeTitle}
+                setActiveTitle={setActiveTitle}
+                tournamentID ={tournamentID}/>
+        </div>
+    )
 
 }
-    
-
-export default TextTournament
