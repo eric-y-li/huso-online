@@ -7,7 +7,7 @@ import CompetitorForm from './components/CompetitorForm.js';
 import TextTournament from './components/TextTournament.js';
 import NavBar from './components/NavBar.js';
 import { Switch, Route, BrowserRouter } from "react-router-dom";
-import NewPage from './components/NewPage.js';
+import Login from './components/Login.js';
 
 // Putting a component here will let you see how it looks to test!
 ReactDOM.render(
@@ -16,12 +16,14 @@ ReactDOM.render(
     <BrowserRouter>
     <NavBar />
     <Switch>
-        <Route path="/test" render={() => <NewPage/>}/>
+        <Route path="/login" render={() => <Login/>}/>
+        <Route path="/tournament" render ={() => 
+        <TextTournament tournamentId = "haha" userId="hoho"/>
+        }/>
     </Switch>
-
     </BrowserRouter>
     <CompetitorForm />
-    <TextTournament tournamentId = "haha" userId="hoho"/>
+    
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -91,7 +91,9 @@ const NavBar = (props) => {
                 onClose={() => setAnchorEl(null)}
               >
                 <MenuItem onClick={() => handleMenuClick('/')}>Home</MenuItem>
-                <MenuItem onClick={() => handleMenuClick('/test')}>Test</MenuItem>
+                <MenuItem onClick={() => handleMenuClick('/login')}>Login</MenuItem>
+                <MenuItem onClick={() => handleMenuClick('/tournament')}>Tournament</MenuItem>
+              
               </Menu>
             </>) : (
             <>
@@ -99,8 +101,11 @@ const NavBar = (props) => {
                 <Button variant="contained" onClick ={ () => handleButtonClick('/')}> 
                     Home
                 </Button>
-                <Button variant="contained" onClick ={ () => handleButtonClick('/test')}> 
-                    Test
+                <Button variant="contained" onClick ={ () => handleButtonClick('/login')}> 
+                    Login
+                </Button>
+                <Button variant="contained" onClick ={ () => handleButtonClick('/tournament')}> 
+                    Tournament
                 </Button>
             </div>    
             </>
