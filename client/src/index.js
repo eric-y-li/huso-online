@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
-import CompetitorForm from './components/CompetitorForm.js';
+import Dashboard from './components/Dashboard/Dashboardjs';
 import TextTournament from './components/TextTournament.js';
 import NavBar from './components/NavBar.js';
 import { Switch, Route, BrowserRouter } from "react-router-dom";
@@ -24,6 +24,7 @@ ReactDOM.render(
         <TextTournament tournamentId = "haha" userId="hoho"/>
         }/>
         <Route path="/signup" render={() => <SignUpForm />} />
+        <Route path="/dashboard" render={() => <Dashboard/>}/>
     </Switch>
     </BrowserRouter>
     
