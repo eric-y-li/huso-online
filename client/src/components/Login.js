@@ -36,7 +36,6 @@ class Login extends Component {
                         style ={{ width:"100%", height: "100%", objectFit: "cover"}}
                         alt = "my_best_friend"
                         />
-                    
                     </Grid>
                     <Grid container item xs = {12} sm={6}
                     style = {{padding: 10}}
@@ -80,7 +79,6 @@ class Login extends Component {
                         <div />
     
                     </Grid>
-    
                 </Grid>
             </div>
         )
