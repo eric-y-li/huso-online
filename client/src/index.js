@@ -8,10 +8,13 @@ import TextTournament from './components/TextTournament.js';
 import NavBar from './components/NavBar.js';
 import { Switch, Route, BrowserRouter } from "react-router-dom";
 import Login from './components/Login.js';
+import SignUpForm from './components/SignUpForm.js';
+
+import Firebase, { FirebaseContext } from './components/Firebase';
 
 // Putting a component here will let you see how it looks to test!
 ReactDOM.render(
-  <React.StrictMode>
+  <FirebaseContext.Provider value={new Firebase()}>
 
     <BrowserRouter>
     <NavBar />
@@ -20,10 +23,11 @@ ReactDOM.render(
         <Route path="/tournament" render ={() => 
         <TextTournament tournamentId = "haha" userId="hoho"/>
         }/>
+        <Route path="/signup" render={() => <SignUpForm />} />
     </Switch>
     </BrowserRouter>
     
-  </React.StrictMode>,
+  </FirebaseContext.Provider>,
   document.getElementById('root')
 );
 
