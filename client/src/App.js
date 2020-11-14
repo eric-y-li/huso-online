@@ -2,7 +2,7 @@
 import './App.css';
 import CompetitorForm from './components/CompetitorForm.js';
 import TextTournament from './components/TextTournament.js';
-import Dashboard from './components/Dashboard.js';
+import Dashboard from './components/Dashboard/Dashboard.js';
 import NavBar from './components/NavBar.js';
 import { Switch, Route, BrowserRouter } from "react-router-dom";
 import Login from './components/Login.js';
