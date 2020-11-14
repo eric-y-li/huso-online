@@ -15,8 +15,7 @@ export default class CompetitorForm extends React.Component {
             // Render elements here! Look into material-ui or something similar
             // for out-of-the-box components (ie. Typography)
             <div>
-                <h1>Stuff Goes Here</h1>
-
+                <h1>User Lookup</h1>
             </div>    
         );
     }   

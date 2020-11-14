@@ -3,44 +3,61 @@ import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import Button from '@material-ui/core/Button';
 
-function ChangeId(props) {
-    return(
-    <div className="timeline-item"> 
-      <div>
-        <Button onClick={() => props.setActiveTitle(props.tournamentID)}>
-            Click me!
-        </Button>
-      <Typography display ='block'
-        color ="primary">
-        {props.title}
-      </Typography>
-      </div>
-    </div>
-    )
-  }
+export default class TextTournament extends React.Component {
 
-export default function TextTournament(props) {
-    const [activeTitle, setActiveTitle] = React.useState('BLANK');
-    const [tournamentID, setTournamentID] = React.useState('BLANK');
-    const [userId, setUserID] = React.useState('BLANK');
+    constructor(props) {
+      super(props);
+      this.state = {
+        tournamentId: "",
+        userId: ""
+      }
+    }
 
+    handleTournamentIdChange = (event) => {
+      this.setState(
+        {
+          tournamentId: event.target.value
+        }
+      );
+    }
 
-    return(
+    handleUserIdChange = (event) => {
+      this.setState(
+        {
+          userId: event.target.value
+        }
+      );
+    }
+
+    handleSubmit = (event) => {
+      this.setState(
+        {
+          title: this.state.tournamentId
+        }
+      );
+      // Do stuff with firebase (to be implemented)
+    }
+
+    render = () => {
+      return(
         <div>
             <TextField 
                 variant = "filled"
                 label = "Tournament ID"
                 placeholder = "my_tournament_1234"
-                onChange ={(event) => {setTournamentID(event.target.value)}}/>
+                onChange = {this.handleTournamentIdChange}/>
             <TextField 
                 variant = "filled"
                 label = "User ID"
                 placeholder = "i_am_player_one"
-                onChange ={(event) => {setUserID(event.target.value)}}/>
-            <ChangeId title = {activeTitle}
-                setActiveTitle={setActiveTitle}
-                tournamentID ={tournamentID}/>
+                onChange ={this.handleUserIdChange}/>
+            <Button onClick = {this.handleSubmit}>Submit</Button>
+            <Typography display ='block'
+              color ="primary">
+              {this.state.title}
+            </Typography>
         </div>
-    )
+      );
+    }
 
 }

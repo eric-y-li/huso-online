@@ -22,7 +22,6 @@ ReactDOM.render(
         }/>
     </Switch>
     </BrowserRouter>
-    <CompetitorForm />
     
   </React.StrictMode>,
   document.getElementById('root')
