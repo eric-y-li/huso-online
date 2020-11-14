@@ -50,7 +50,7 @@ const NavBar = (props) => {
   };
 
   const handleButtonClick = (pageURL) => {
-      history.push(pageURL);
+    history.push(pageURL);
 
   }
 
@@ -93,6 +93,7 @@ const NavBar = (props) => {
                 <MenuItem onClick={() => handleMenuClick('/')}>Home</MenuItem>
                 <MenuItem onClick={() => handleMenuClick('/login')}>Login</MenuItem>
                 <MenuItem onClick={() => handleMenuClick('/tournament')}>Tournament</MenuItem>
+                <MenuItem onClick={() => handleMenuClick('/dashboard')}>Dashboard</MenuItem>
               
               </Menu>
             </>) : (
@@ -106,6 +107,9 @@ const NavBar = (props) => {
                 </Button>
                 <Button variant="contained" onClick ={ () => handleButtonClick('/tournament')}> 
                     Tournament
+                </Button>
+                <Button variant="contained" onClick ={ () => handleButtonClick('/dashboard')}> 
+                    Dashboard
                 </Button>
             </div>    
             </>

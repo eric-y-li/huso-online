@@ -1,28 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
-import CompetitorForm from './components/CompetitorForm.js';
-import TextTournament from './components/TextTournament.js';
-import NavBar from './components/NavBar.js';
-import { Switch, Route, BrowserRouter } from "react-router-dom";
-import Login from './components/Login.js';
+import App from "./App.js";
+
 
 // Putting a component here will let you see how it looks to test!
 ReactDOM.render(
   <React.StrictMode>
-
-    <BrowserRouter>
-    <NavBar />
-    <Switch>
-        <Route path="/login" render={() => <Login/>}/>
-        <Route path="/tournament" render ={() => 
-        <TextTournament tournamentId = "haha" userId="hoho"/>
-        }/>
-    </Switch>
-    </BrowserRouter>
-    
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

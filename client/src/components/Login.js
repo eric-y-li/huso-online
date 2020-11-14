@@ -51,9 +51,10 @@ export default function Login() {
                         <TextField InputProps={{
                                     className: classes.input,
                                     }} 
-                                    label = "Username" 
-                                    margin="normal"/>
-                        <TextField label = "Password" margin="normal"/>
+                                    label = "Student ID" 
+                                    margin="normal"
+                                    placeholder="123-456-789"/>
+                        <TextField label = "SOMETHING ELSE??" margin="normal"/>
                         <div style={{ height: 20}} /> 
                         <Button color = "primary" variant = "contained">
                             Log in
