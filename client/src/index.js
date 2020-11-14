@@ -2,14 +2,32 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import App from "./App.js";
 
+import CompetitorForm from './components/CompetitorForm.js';
+import TextTournament from './components/TextTournament.js';
+import NavBar from './components/NavBar.js';
+import { Switch, Route, BrowserRouter } from "react-router-dom";
+import Login from './components/Login.js';
+import SignUpForm from './components/SignUpForm.js';
+
+import Firebase, { FirebaseContext } from './components/Firebase';
 
 // Putting a component here will let you see how it looks to test!
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <FirebaseContext.Provider value={new Firebase()}>
+
+    <BrowserRouter>
+    <NavBar />
+    <Switch>
+        <Route path="/login" render={() => <Login/>}/>
+        <Route path="/tournament" render ={() => 
+        <TextTournament tournamentId = "haha" userId="hoho"/>
+        }/>
+        <Route path="/signup" render={() => <SignUpForm />} />
+    </Switch>
+    </BrowserRouter>
+    
+  </FirebaseContext.Provider>,
   document.getElementById('root')
 );
 
