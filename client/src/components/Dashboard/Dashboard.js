@@ -12,70 +12,71 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import TextField from '@material-ui/core/TextField';
 
-const sciEventsUser = [
-  {
-    title: "Event 1",
-    description: "I don't know what we do in this event",
-    display: "Good morning"
-  },
-  {
-    title: "NEUROLOGY",
-    description: "How one becomes peak neurotic",
-    display: "My"
-  },
-  {
-    title: "Matchometics",
-    description: "matching people based on their meth-affinity",
-    display: "Name"
-  }
-];
-
 const sciEventsSystem = [
     {
       title: "Event 1",
       description: "I don't know what we do in this event",
-      display: "Good morning"
+      display: "Good morning",
+      isUser: true,
     },
     {
       title: "NEUROLOGY",
       description: "How one becomes peak neurotic",
-      display: "My"
+      display: "My",
+      isUser: true,
     },
     {
       title: "Matchometics",
       description: "matching people based on their meth-affinity",
-      display: "Name"
+      display: "Name",
+      isUser: true,
     },
     {
-        title: "asdfl",
-        description: "How one becomes peak neurotic",
-        display: "Is"
-      },
-      {
-        title: "soijfesl",
-        description: "matching people based on their meth-affinity",
-        display: "Eric"
-      }
+      title: "asdfl",
+      description: "How one becomes peak neurotic",
+      display: "Is",
+      isUser: true,
+    },
+    {
+      title: "soijfesl",
+      description: "matching people based on their meth-affinity",
+      display: "Eric",
+      isUser: false,
+    }
   ];
   
 
 class Dashboard extends Component {
-  state = { description: "", openModal: false, title: "",
+  state = { description: "", openModal: false, title: "", isUser: null,
     sciEvent: {
       title: '',
       description: '',
       display: '',
     },
-    openNewEvent: false,
+    openNewEvent: false
   };
 
-  handleOpenModal = ({ description, title }) => {
-    this.setState({ description, openModal: true, title });
+  handleOpenModal = ({ description, title, isUser }) => {
+    // This sets the react state to be the content of whatever sciEvent was clicked
+    this.setState({ description, openModal: true, title, isUser });
   };
 
   handleCloseModal = () => {
     this.setState({ openModal: false });
+
   };
+
+  handleModalButtonClick = () => {
+    // loops through all events and changes whether the event is part of the 
+    // user's set of events or not.
+    sciEventsSystem.forEach( (item,index) => {
+      if (item.title == this.state.title){
+        item.isUser = !item.isUser;
+      }
+    } );
+    // Using the same operation to close the dialog.
+    this.handleCloseModal();
+  }
 
   handleOpenNewEvent = () => {
     this.setState({ openNewEvent: true});
@@ -101,6 +102,7 @@ class Dashboard extends Component {
         title: '',
         description: '',
         display: '',
+        isUser: false,
       },
       // In the future, this is what will connect to the database!
     });
@@ -123,7 +125,9 @@ class Dashboard extends Component {
                     flexDirection: "column", 
                     minWidth:350}}>
         <List>
-        {sciEventsUser.map((props) => (
+        {sciEventsSystem.filter((userSciEvent) => {
+          return userSciEvent.isUser
+        }).map((props) => (
           <Scenario
             key={props.title}
             {...props}
@@ -143,7 +147,9 @@ class Dashboard extends Component {
                 flexDirection: "column", 
                 minWidth:350}}>
         <List>
-        {sciEventsSystem.map((props) => (
+        {sciEventsSystem.filter((userSciEvent) => {
+          return !userSciEvent.isUser
+        }).map((props) => (
           <Scenario
             key={props.title}
             {...props}
@@ -192,7 +198,7 @@ class Dashboard extends Component {
           </Button>
         </DialogActions>
       </Dialog>
-      <Modal {...this.state} onCloseModal={this.handleCloseModal} />
+      <Modal {...this.state} onCloseModal={this.handleCloseModal} onModalButtonClick = {this.handleModalButtonClick} />
     </Grid>
   )
   };

@@ -10,8 +10,8 @@ import PersonIcon from '@material-ui/icons/Person';
 class Scenario extends PureComponent {
 
     openModal = () => {
-      const { description, handleOpenModal, title } = this.props;
-      handleOpenModal({ description, title });
+      const { description, handleOpenModal, title, isUser } = this.props;
+      handleOpenModal({ description, title, isUser });
     };
   
     render = () => (
@@ -29,7 +29,6 @@ class Scenario extends PureComponent {
   Scenario.propTypes = {
     description: PropTypes.string.isRequired,
     handleOpenModal: PropTypes.func.isRequired,
-    imgSrc: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired
   };
   

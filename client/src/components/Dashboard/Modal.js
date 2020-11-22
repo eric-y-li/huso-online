@@ -12,7 +12,7 @@ import {
 
 
 
-const Modal = ({ description, onCloseModal, openModal, title }) => {
+const Modal = ({ description, onCloseModal, openModal, title, isUser, onModalButtonClick }) => {
 
 
   return(
@@ -30,8 +30,9 @@ const Modal = ({ description, onCloseModal, openModal, title }) => {
     </DialogContent>
     
     <DialogActions>
-      <Button onClick={onCloseModal} color="primary">
-        Ok boomer
+      <Button onClick={onModalButtonClick} 
+        color="primary">
+        {isUser ? "I DON'T WANT EVENT" : "I WANT THIS EVENT"}
       </Button>
     </DialogActions>
   </Dialog>
