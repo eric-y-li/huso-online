@@ -47,17 +47,22 @@ const sciEventsSystem = [
   
 
 class Dashboard extends Component {
+
+  // the first few items in the state are keeping track of what Scenario has been clicked on
+  // and will send this information to the Modal (for dialog stuff)
+  // newSciEvent contains the information for the new event
   state = { description: "", openModal: false, title: "", isUser: null,
-    sciEvent: {
+    newSciEvent: {
       title: '',
       description: '',
       display: '',
     },
     openNewEvent: false
   };
+  
 
   handleOpenModal = ({ description, title, isUser }) => {
-    // This sets the react state to be the content of whatever sciEvent was clicked
+    // This sets the react state to be the content of whatever newSciEvent was clicked
     this.setState({ description, openModal: true, title, isUser });
   };
 
@@ -78,6 +83,7 @@ class Dashboard extends Component {
     this.handleCloseModal();
   }
 
+  // For the new scioly event dialog
   handleOpenNewEvent = () => {
     this.setState({ openNewEvent: true});
   };
@@ -85,32 +91,33 @@ class Dashboard extends Component {
   handleCloseNewEvent = () => {
     this.setState({ openNewEvent: false});
   };
-
+  // To change the variables while making the new scioly event
   handleChange = name => ({ target: {value}}) => {
     this.setState({
-      sciEvent: {
-        ...this.state.sciEvent,
+      newSciEvent: {
+        ...this.state.newSciEvent,
         [name]: value,
       }
     })
   };
   
   handleSciEventCreate = () => {
-    sciEventsSystem.push(this.state.sciEvent);
+    sciEventsSystem.push(this.state.newSciEvent);
     this.setState({
-      sciEvent: {
+      newSciEvent: {
         title: '',
         description: '',
         display: '',
         isUser: false,
       },
-      // In the future, this is what will connect to the database!
+      // In the future, this is the function that will connect to the database!
+      // *hopefully
     });
     this.handleCloseNewEvent();
   }
   render(){
-
-    const {title, description, display} = this.state.sciEvent;
+    // destructuring these values to place into the props for TextField
+    const {title, description, display} = this.state.newSciEvent;
 
     return(
     <Grid container>
@@ -164,7 +171,7 @@ class Dashboard extends Component {
           New Event!!
       </Button>
       <Typography>
-          {this.state.sciEvent.title}
+          {this.state.newSciEvent.title}
       </Typography>
     </Grid>
       <Dialog 
