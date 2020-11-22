@@ -25,7 +25,8 @@ class Login extends Component {
             error: null
         }
     }
-    
+
+
     render() {
         const { classes } = this.props;
         return(
@@ -69,7 +70,7 @@ class Login extends Component {
                                 Log in
                             </Button>
                             <div style={{ height: 20}} /> 
-                            <Link to={'/signup'}>
+                            <Link to = {{pathname: '/signup'}}>
                                 <Button>
                                     Sign up!
                                 </Button>

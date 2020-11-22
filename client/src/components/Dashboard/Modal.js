@@ -6,10 +6,16 @@ import {
   DialogActions,
   DialogContent,
   DialogContentText,
-  DialogTitle
+  DialogTitle,
+  TextField
 } from "@material-ui/core";
 
-const Modal = ({ description, onCloseModal, openModal, title }) => (
+
+
+const Modal = ({ description, onCloseModal, openModal, title }) => {
+
+
+  return(
   <Dialog
     open={openModal}
     onClose={onCloseModal}
@@ -22,13 +28,14 @@ const Modal = ({ description, onCloseModal, openModal, title }) => (
         {description}
       </DialogContentText>
     </DialogContent>
+    
     <DialogActions>
       <Button onClick={onCloseModal} color="primary">
         Ok boomer
       </Button>
     </DialogActions>
   </Dialog>
-);
+  )};
 
 Modal.propTypes = {
   description: PropTypes.string.isRequired,
