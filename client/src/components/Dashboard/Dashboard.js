@@ -170,15 +170,12 @@ class Dashboard extends Component {
       <Button onClick={this.handleOpenNewEvent}>
           New Event!!
       </Button>
-      <Typography>
-          {this.state.newSciEvent.title}
-      </Typography>
     </Grid>
       <Dialog 
       open = {this.state.openNewEvent}
       onClose = {this.handleCloseNewEvent}
       >
-        <DialogTitle id="alert-dialog-title">{"Use Google's location service?"}</DialogTitle>
+        <DialogTitle id="alert-dialog-title">{"Create a new Event"}</DialogTitle>
         <DialogContent>
         <form>
         <TextField 
