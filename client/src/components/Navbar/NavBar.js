@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { useTheme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -10,25 +10,9 @@ import Menu from '@material-ui/core/Menu';
 import Button from "@material-ui/core/Button"
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { withRouter } from "react-router-dom";
+import makeStyles from "./NavBar_styles.jsx";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    [theme.breakpoints.down("xs")]:{
-    flexGrow: 1
-}
-  },
-  navBarOptions: {
-    display: "flex",
-    flex: 1,
-    justifyContent: "space-evenly",
-  },
-}));
+const useStyles = makeStyles;
 
 const NavBar = (props) => {
   const { history } = props;
@@ -56,48 +40,52 @@ const NavBar = (props) => {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar className={classes.root} position="static">
         <Toolbar>
 
           <Typography variant="h6" className={classes.title}>
             Menu
           </Typography>
 
-        <div>
-            { isMobile ? (
-            <><IconButton
-                aria-label="menu"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleMenu}
-                color="inherit"
-              >
-                <MenuIcon />
-              </IconButton>
+        <div> {/**
+         * Separating the functions for mobile users and other--might not be a great idea?
+         */}
+    { isMobile ? ( 
+    <><IconButton
+        aria-label="menu"
+        aria-controls="menu-appbar"
+        aria-haspopup="true"
+        onClick={handleMenu}
+        color="inherit"
+      >
+      <MenuIcon />
+      </IconButton>
 
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={open}
-                onClose={() => setAnchorEl(null)}
-              >
-                <MenuItem onClick={() => handleMenuClick('/')}>Home</MenuItem>
-                <MenuItem onClick={() => handleMenuClick('/login')}>Login</MenuItem>
-                <MenuItem onClick={() => handleMenuClick('/tournament')}>Tournament</MenuItem>
-                <MenuItem onClick={() => handleMenuClick('/dashboard')}>Dashboard</MenuItem>
-              
-              </Menu>
-            </>) : (
-            <>
+      <Menu
+        id="menu-appbar"
+        anchorEl={anchorEl}
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+        keepMounted
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+        open={open}
+        onClose={() => setAnchorEl(null)}
+      >
+        <MenuItem onClick={() => handleMenuClick('/')}>Home</MenuItem>
+        <MenuItem onClick={() => handleMenuClick('/login')}>Login</MenuItem>
+        <MenuItem onClick={() => handleMenuClick('/tournament')}>Tournament</MenuItem>
+        <MenuItem onClick={() => handleMenuClick('/dashboard')}>Dashboard</MenuItem>
+      
+      </Menu>
+    </>) : (
+            <> {/**
+             * This is for the web users WIP 01/08 editing styles
+             */}
             <div className = {classes.navBarOptions}>
                 <Button variant="contained" onClick ={ () => handleButtonClick('/')}> 
                     Home
